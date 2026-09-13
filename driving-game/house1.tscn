@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dvkb30nj57qgx"]
+
+[ext_resource type="PackedScene" uid="uid://cuee4svqeh4eg" path="res://assets/House.blend" id="1_pu0qd"]
+[ext_resource type="Script" uid="uid://d148pqdyt4myb" path="res://House.gd" id="2_q08g1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5tdpr"]
+
+[node name="House" unique_id=1324037848 instance=ExtResource("1_pu0qd")]
+script = ExtResource("2_q08g1")
+
+[node name="Light" parent="." index="1" unique_id=2113898089]
+transform = Transform3D(-0.29086468, -0.77110094, 0.56639314, -0.055189036, 0.6045247, 0.79467237, -0.9551711, 0.19988343, -0.2183912, 4.0762453, 10.903862, -1.005454)
+
+[node name="Camera" parent="." index="2" unique_id=1011222076]
+transform = Transform3D(0.72767633, 0.30542088, -0.6141704, -3.6587608e-08, 0.89539564, 0.4452714, 0.68592066, -0.32401347, 0.6515582, -10.6411085, 8.958309, 11.925791)
+
+[node name="Garage Zone" type="Area3D" parent="." index="8" unique_id=1056896222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Garage Zone" index="0" unique_id=1865292131]
+transform = Transform3D(3.05, 0, 0, 0, 2.0700002, 0, 0, 0, 4.3605, 0, 0.5, -0.6999998)
+shape = SubResource("BoxShape3D_5tdpr")
+debug_color = Color(0.70076007, 0.49219292, 0, 0.41960785)
+
+[connection signal="body_entered" from="Garage Zone" to="." method="_on_garage_zone_body_entered"]
+[connection signal="body_exited" from="Garage Zone" to="." method="_on_garage_zone_body_exited"]
