@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 	
 
 
-
 func _on_garage_zone_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Vehicles"):
 		print("Car parked inside the garage")
