@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://boqd3pa7t3kcb"]
 
+[ext_resource type="PackedScene" uid="uid://cblji1lgei2p5" path="res://car.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ddiyaph47p4ny" path="res://car.gd" id="2_0xm2m"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(60, 2, 60)
 
@@ -21,3 +24,11 @@ mesh = SubResource("BoxMesh_5tdpr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1018710437]
 transform = Transform3D(0.9659258, 0, -0.25881916, 0.22414397, 0.5, 0.83651626, 0.12940958, -0.8660254, 0.48296288, 0, 12, 0)
 shadow_enabled = true
+
+[node name="Car" parent="." unique_id=614287776 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8277577, 0)
+mass = 450.0
+script = ExtResource("2_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="Car" unique_id=1184680637]
+transform = Transform3D(0.9999588, -0.0061530634, 0.006673731, 0.0018329081, 0.8569257, 0.5154367, -0.008890406, -0.5154032, 0.8569017, -0.25211, 3.602137, 4.4887686)

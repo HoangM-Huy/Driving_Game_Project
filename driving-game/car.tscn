@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cblji1lgei2p5"]
+
+[ext_resource type="PackedScene" uid="uid://q1enkkr2rse8" path="res://SedanNew.glb" id="1_7822p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgi7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvh6u"]
+size = Vector3(2.0770264, 1.3172076, 2.4103262)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ygx7"]
+size = Vector3(1.7128601, 0.8617266, 2.1109009)
+
+[node name="Car" type="VehicleBody3D" unique_id=614287776]
+physics_material_override = SubResource("PhysicsMaterial_fgi7u")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=278528413]
+
+[node name="Sedan" parent="Pivot" unique_id=1857067826 instance=ExtResource("1_7822p")]
+
+[node name="MainFrameHitbox" type="CollisionShape3D" parent="." unique_id=865198997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120666504, 0.6771077, 1.1559132)
+shape = SubResource("BoxShape3D_fvh6u")
+
+[node name="HoodHitbox" type="CollisionShape3D" parent="." unique_id=939342518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13044739, 0.43844375, -0.71817756)
+shape = SubResource("BoxShape3D_6ygx7")
+
+[node name="FrontLeft" type="VehicleWheel3D" parent="." unique_id=849359510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8572332, 0.118794054, -0.95536923)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.35
+
+[node name="FrontRight" type="VehicleWheel3D" parent="." unique_id=1004915528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6079157, 0.118794054, -0.95536923)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.35
+
+[node name="RearRight" type="VehicleWheel3D" parent="." unique_id=2114637883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8432388, 0.115238756, 1.4361103)
+use_as_traction = true
+wheel_radius = 0.35
+
+[node name="RearLeft" type="VehicleWheel3D" parent="." unique_id=1517522672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.107193, 0.115238756, 1.427779)
+use_as_traction = true
+wheel_radius = 0.35
