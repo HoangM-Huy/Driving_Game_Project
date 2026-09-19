@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://ca32qu0a66ak5"]
 
 [ext_resource type="Script" uid="uid://wdc3bch6owg4" path="res://Player1.gd" id="1_xhfnw"]
-[ext_resource type="Script" uid="uid://bb26t07e6h3lg" path="res://player_camera.gd" id="2_5pxne"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8upip"]
 height = 2.242691
@@ -311,6 +310,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1vigm")
 
+[sub_resource type="GDScript" id="GDScript_nkmm1"]
+script/source = "extends Camera3D
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _process(delta: float) -> void:
+	rotation.x = clamp(rotation.x, -1, 1)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotate(Vector3.UP, -event.relative.x * 0.001)
+		rotate_object_local(Vector3.RIGHT, -event.relative.y * 0.001)
+"
+
 [node name="Player" type="CharacterBody3D" unique_id=974651752]
 script = ExtResource("1_xhfnw")
 
@@ -386,7 +402,7 @@ metadata/extras = {
 "ant_landscape": {}
 }
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1710473718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.1)
+[node name="Player_camera" type="Camera3D" parent="." unique_id=1710473718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.2)
 current = true
-script = ExtResource("2_5pxne")
+script = SubResource("GDScript_nkmm1")

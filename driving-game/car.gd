@@ -17,5 +17,6 @@ func _ready() -> void:
 	rearRight.position = Vector3.ZERO
 
 func _physics_process(_delta: float) -> void:
-	steering = Input.get_axis("move_right", "move_left") * 0.4
-	engine_force = Input.get_axis("move_forward", "move_back") * 700
+	#steering = Input.get_axis("move_right", "move_left") * 0.4
+	#engine_force = Input.get_axis("move_forward", "move_back") * 700
+	pass

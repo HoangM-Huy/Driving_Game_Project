@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 # How fast the player moves in meters per second.
 @export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -9,35 +8,58 @@ extends CharacterBody3D
 var target_velocity = Vector3.ZERO
 @export var jump_impulse=20
 
+var look_dir: Vector2
+@onready var camera = $Player_camera
+var camera_sens = 50
+
+var LockMouse = false
+
 func _physics_process(delta):
-	var direction = Vector3.ZERO
-
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_back"):
-		direction.z += 1
-	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
-
-	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-		# Setting the basis property will affect the rotation of the node.
-		$Pivot.basis = Basis.looking_at(direction)
-
-	# Ground Velocity
-	target_velocity.x = direction.x * speed
-	target_velocity.z = direction.z * speed
+	#var direction = Vector3.ZERO
+	var camera_direction = $Player_camera.basis
+		
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+		velocity.y = velocity.y - (fall_acceleration * delta)
 	# Jumping.
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		target_velocity.y = jump_impulse
-		
-	# Moving the Character
-	velocity = target_velocity
+		velocity.y = jump_impulse
+	
+	if Input.is_action_just_pressed("Lock_Mouse"):
+		LockMouse = !LockMouse
+		if LockMouse:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+	_rotate_camera(delta)
 	move_and_slide()
+	
+func _input(event: InputEvent):
+	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
+		
+func _rotate_camera(delta: float, sens_mod: float = 1.0):
+	var input = Input.get_vector("look_left", "look_right", "look_down", "look_up")
+	look_dir += input
+	rotation.y -= look_dir.x * camera_sens * delta
+	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.)
+	look_dir = Vector2.ZERO
+
+
+
+
+
+
+
+
+
 	
