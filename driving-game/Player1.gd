@@ -24,7 +24,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 		
-
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 		velocity.y = velocity.y - (fall_acceleration * delta)
@@ -38,7 +37,6 @@ func _physics_process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			
 	_rotate_camera(delta)
 	move_and_slide()
 	
@@ -48,7 +46,7 @@ func _input(event: InputEvent):
 func _rotate_camera(delta: float, sens_mod: float = 1.0):
 	var input = Input.get_vector("ui_left", "ui_right", "ui_down", "ui_up")
 	look_dir += input
-	rotation.y -= look_dir.x * camera_sens * delta
+	rotation.y -= look_dir.x * camera_sens * sens_mod * delta
 	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.5)
 	look_dir = Vector2.ZERO
 

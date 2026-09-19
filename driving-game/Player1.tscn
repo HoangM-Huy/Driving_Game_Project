@@ -403,6 +403,6 @@ metadata/extras = {
 }
 
 [node name="Player_camera" type="Camera3D" parent="Pivot" unique_id=1710473718]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.2)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 2, 0.6)
 current = true
 script = SubResource("GDScript_nkmm1")
