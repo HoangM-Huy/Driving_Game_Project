@@ -9,15 +9,12 @@ var target_velocity = Vector3.ZERO
 @export var jump_impulse=20
 
 var look_dir: Vector2
-@onready var camera = $Player_camera
+@onready var camera = $Pivot/Player_camera
 var camera_sens = 50
 
 var LockMouse = false
 
 func _physics_process(delta):
-	#var direction = Vector3.ZERO
-	var camera_direction = $Player_camera.basis
-		
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -26,6 +23,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+		
 
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
@@ -48,10 +46,10 @@ func _input(event: InputEvent):
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
 		
 func _rotate_camera(delta: float, sens_mod: float = 1.0):
-	var input = Input.get_vector("look_left", "look_right", "look_down", "look_up")
+	var input = Input.get_vector("ui_left", "ui_right", "ui_down", "ui_up")
 	look_dir += input
 	rotation.y -= look_dir.x * camera_sens * delta
-	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.)
+	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5, 1.5)
 	look_dir = Vector2.ZERO
 
 
