@@ -18,4 +18,4 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	steering = Input.get_axis("move_right", "move_left") * 0.4
-	engine_force = Input.get_axis("move_forward", "reverse") * 700
+	engine_force = Input.get_axis("move_forward", "move_back") * 700
