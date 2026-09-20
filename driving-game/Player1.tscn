@@ -318,12 +318,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	rotation.x = clamp(rotation.x, -1, 1)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate(Vector3.UP, -event.relative.x * 0.001)
+		#rotate(Vector3.UP, -event.relative.x * 0.001)
+		
+		# When mouse is unlocked, this line (line 17) causes screen to move
+		# up and down, may keep as feature
 		rotate_object_local(Vector3.RIGHT, -event.relative.y * 0.001)
 "
 
@@ -403,6 +405,6 @@ metadata/extras = {
 }
 
 [node name="Player_camera" type="Camera3D" parent="Pivot" unique_id=1710473718]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 2, 0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0061924458, 1.522507, -0.071695805)
 current = true
 script = SubResource("GDScript_nkmm1")
