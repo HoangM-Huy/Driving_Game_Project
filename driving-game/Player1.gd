@@ -9,16 +9,21 @@ var target_velocity = Vector3.ZERO
 @export var jump_impulse=20
 @onready var anim_player = $Pivot/HumanChar/AnimationPlayer
 
+@onready var swordAnim = $Pivot/HumanChar/rig/Skeleton3D/Hand/Sword/anim
+
 var look_dir: Vector3
 var side_dir: Vector3
 @onready var camera = $Pivot/Player_camera
 var camera_sens = 50
+
+
 
 var mouseInput = Vector2.ZERO
 
 var LockMouse = false
 
 func _ready() -> void:
+	swordAnim.play("Equip")
 	LockMouse = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://paarfgpq15tw"]
+
+[ext_resource type="PackedScene" uid="uid://dee2di4a1ycux" path="res://basic_sword.glb" id="1_74bdg"]
+[ext_resource type="Script" uid="uid://cdv4l142cth6s" path="res://sword.gd" id="1_e4ynd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgi7u"]
+size = Vector3(12.614983, 19.877022, 7.723192)
+
+[sub_resource type="Animation" id="Animation_74bdg"]
+resource_name = "Equip"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Katana:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Katana:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5707964), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r76a6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Katana:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.013632059, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Katana:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e4ynd"]
+resource_name = "Slash"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Katana:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.26, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.025, 0, 0), Vector3(0, 0, -0.25), Vector3(0, 0.013632059, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Katana:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.19, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.27925268, -0.6195919, 0), Vector3(1.3247049, 0.050614547, 0), Vector3(1.8151424, 3.1049407, 0), Vector3(1.7837265, 2.9373891, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dwvek"]
+resource_name = "Unequip"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Katana:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Katana:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.5707964)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwvek"]
+_data = {
+&"Equip": SubResource("Animation_74bdg"),
+&"RESET": SubResource("Animation_r76a6"),
+&"Slash": SubResource("Animation_e4ynd"),
+&"Unequip": SubResource("Animation_dwvek")
+}
+
+[node name="Sword" type="Node3D" unique_id=1006597000]
+script = ExtResource("1_e4ynd")
+
+[node name="Katana" type="Node3D" parent="." unique_id=1406647225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013632059, 0)
+
+[node name="Mesh" parent="Katana" unique_id=1351552194 instance=ExtResource("1_74bdg")]
+transform = Transform3D(0.049753495, 0, 0, 0, 0.030936278, 0, 0, 0, 0.039888814, 0.10129738, 0.010029733, 6.377697e-05)
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=22359245]
+transform = Transform3D(0.033468515, 0, 0, 0, 0.03423905, 0, 0, 0, 0.06350196, 0.09847093, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=530217942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7827454, 11.483954, -0.0867571)
+shape = SubResource("BoxShape3D_fgi7u")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=884252485]
+libraries/ = SubResource("AnimationLibrary_dwvek")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

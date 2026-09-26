@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ca32qu0a66ak5"]
 
 [ext_resource type="Script" uid="uid://wdc3bch6owg4" path="res://Player1.gd" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://paarfgpq15tw" path="res://sword.tscn" id="2_5pxne"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8upip"]
 height = 2.242691
@@ -1038,6 +1039,9 @@ skeleton = NodePath("..")
 mesh = SubResource("ArrayMesh_ibdtj")
 skin = SubResource("Skin_nihj6")
 skeleton = NodePath("..")
+
+[node name="Sword" parent="Pivot/HumanChar/rig/Skeleton3D/Hand" unique_id=1006597000 instance=ExtResource("2_5pxne")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.32515624, 1.2495807, 0.43809003)
 
 [node name="Head" type="MeshInstance3D" parent="Pivot/HumanChar/rig/Skeleton3D" unique_id=661977385]
 mesh = SubResource("ArrayMesh_j3hf6")
