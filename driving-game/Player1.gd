@@ -7,6 +7,7 @@ extends CharacterBody3D
 
 var target_velocity = Vector3.ZERO
 @export var jump_impulse=20
+@onready var anim_player = $Pivot/HumanChar/AnimationPlayer
 
 var look_dir: Vector3
 var side_dir: Vector3
@@ -49,9 +50,13 @@ func _physics_process(delta):
 	if movingDirection != Vector3.ZERO:
 		velocity.x = movingDirection.x * speed
 		velocity.z = movingDirection.z * speed
+		if anim_player.current_animation != "walk":
+			anim_player.play("walk", 0.25, 1.5)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+		if anim_player.current_animation == "walk":
+			anim_player.play("RESET")
 	
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity

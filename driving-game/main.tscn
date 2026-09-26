@@ -31,7 +31,6 @@ shadow_enabled = true
 
 [node name="Car" parent="." unique_id=614287776 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12775773, 0)
-mass = 450.0
 
 [node name="Camera3D" type="Camera3D" parent="Car" unique_id=1184680637]
 transform = Transform3D(0.9999588, -0.0061530634, 0.006673731, 0.0018329081, 0.8569257, 0.5154367, -0.008890406, -0.5154032, 0.8569017, -0.25211, 3.602137, 4.4887686)
