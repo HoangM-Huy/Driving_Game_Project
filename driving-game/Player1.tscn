@@ -1042,15 +1042,6 @@ mesh = SubResource("ArrayMesh_ibdtj")
 skin = SubResource("Skin_nihj6")
 skeleton = NodePath("..")
 
-[node name="Sword" parent="Pivot/HumanChar/rig/Skeleton3D/Hand" unique_id=1006597000 instance=ExtResource("2_5pxne")]
-transform = Transform3D(0.11537397, 0, -0.99332213, 0, 1, 0, 0.99332213, 0, 0.11537397, -0.3290088, 1.2495807, 0.43988642)
-
-[node name="coltm4a1" parent="Pivot/HumanChar/rig/Skeleton3D/Hand" unique_id=999552518 instance=ExtResource("3_7k5wa")]
-transform = Transform3D(0.007445755, 0, -0.2665627, 0, 0.2666667, 0, 0.2665627, 0, 0.007445755, 0, 1.25, 0.4)
-script = ExtResource("4_1slkb")
-default_position = Vector3(0.4, 1, 0.6)
-ads_position = Vector3(0, 1.25, 0.4)
-
 [node name="Head" type="MeshInstance3D" parent="Pivot/HumanChar/rig/Skeleton3D" unique_id=661977385]
 mesh = SubResource("ArrayMesh_j3hf6")
 skin = SubResource("Skin_nihj6")
@@ -1094,3 +1085,14 @@ blend_times = [&"RESET", &"walk", 0.25, &"walk", &"RESET", 0.25]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0061924458, 1.522507, -0.071695805)
 current = true
 script = SubResource("GDScript_nkmm1")
+
+[node name="HandPivot" type="Node3D" parent="Pivot/Player_camera" unique_id=1749096393]
+
+[node name="Sword" parent="Pivot/Player_camera/HandPivot" unique_id=1006597000 instance=ExtResource("2_5pxne")]
+transform = Transform3D(-0.086530544, 0, 0.7449916, 0, 0.75, 0, -0.7449916, 0, -0.086530544, 0.42830062, -0.35268462, -0.48468888)
+
+[node name="coltm4a1" parent="Pivot/Player_camera/HandPivot" unique_id=999552518 instance=ExtResource("3_7k5wa")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.20000003, 0, -0.2, 0, -8.742278e-09, 0, -0.57424146, -0.24623024)
+script = ExtResource("4_1slkb")
+default_position = Vector3(-0.375, -0.81, -0.433)
+ads_position = Vector3(0, -0.574, -0.246)

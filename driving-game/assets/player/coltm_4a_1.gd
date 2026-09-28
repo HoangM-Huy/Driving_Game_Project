@@ -2,7 +2,7 @@ extends Node3D
 
 const ADS_LERP = 20
 
-@onready var camera = $"../../../../../Player_camera"
+@onready var camera = $"../.."
 
 @export var default_position: Vector3
 @export var ads_position: Vector3

@@ -9,7 +9,7 @@ var target_velocity = Vector3.ZERO
 @export var jump_impulse=20
 @onready var anim_player = $Pivot/HumanChar/AnimationPlayer
 
-@onready var swordAnim = $Pivot/HumanChar/rig/Skeleton3D/Hand/Sword/anim
+@onready var swordAnim = $Pivot/Player_camera/HandPivot/Sword/anim
 
 var look_dir: Vector3
 var side_dir: Vector3
