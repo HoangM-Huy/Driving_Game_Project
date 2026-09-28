@@ -702,23 +702,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_bcehq"]
-resource_name = "aim_shoot"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.574, -0.246), Vector3(0, -0.574, -0.196), Vector3(0, -0.574, -0.246)]
-}
-
 [sub_resource type="Animation" id="Animation_r1v58"]
 resource_name = "shoot"
 length = 0.1
@@ -739,7 +722,6 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bcehq"]
 _data = {
 &"RESET": SubResource("Animation_1slkb"),
-&"aim_shoot": SubResource("Animation_bcehq"),
 &"shoot": SubResource("Animation_r1v58")
 }
 
@@ -1153,5 +1135,5 @@ script = ExtResource("4_1slkb")
 default_position = Vector3(-0.375, -0.81, -0.433)
 ads_position = Vector3(0, -0.574, -0.246)
 
-[node name="Shoot" type="AnimationPlayer" parent="Pivot/Player_camera/HandPivot/coltm4a1" unique_id=1736583102]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Player_camera/HandPivot/coltm4a1" unique_id=1736583102]
 libraries/ = SubResource("AnimationLibrary_bcehq")
