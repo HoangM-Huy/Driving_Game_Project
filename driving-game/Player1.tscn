@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wdc3bch6owg4" path="res://Player1.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://paarfgpq15tw" path="res://sword.tscn" id="2_5pxne"]
 [ext_resource type="PackedScene" uid="uid://431cw572oo17" path="res://assets/player/coltm4a1.blend" id="3_7k5wa"]
+[ext_resource type="Script" uid="uid://27top4bcqmj2" path="res://assets/player/coltm_4a_1.gd" id="4_1slkb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8upip"]
 height = 2.242691
@@ -1045,7 +1046,10 @@ skeleton = NodePath("..")
 transform = Transform3D(0.11537397, 0, -0.99332213, 0, 1, 0, 0.99332213, 0, 0.11537397, -0.3290088, 1.2495807, 0.43988642)
 
 [node name="coltm4a1" parent="Pivot/HumanChar/rig/Skeleton3D/Hand" unique_id=999552518 instance=ExtResource("3_7k5wa")]
-transform = Transform3D(-0.045259066, 0, -0.2627979, 0, 0.26666668, 0, 0.2627979, 0, -0.045259066, 0.24746734, 0.9743635, 0.30159763)
+transform = Transform3D(0.007445755, 0, -0.2665627, 0, 0.2666667, 0, 0.2665627, 0, 0.007445755, 0, 1.25, 0.4)
+script = ExtResource("4_1slkb")
+default_position = Vector3(0.4, 1, 0.6)
+ads_position = Vector3(0, 1.25, 0.4)
 
 [node name="Head" type="MeshInstance3D" parent="Pivot/HumanChar/rig/Skeleton3D" unique_id=661977385]
 mesh = SubResource("ArrayMesh_j3hf6")
