@@ -2,8 +2,12 @@ extends Node3D
 
 const ADS_LERP = 20
 
+var bullet = load("res://bullet.tscn")
+var instance
+
 @onready var camera = $"../.."
 @onready var gun_anim = $Shoot
+@onready var gun_barrel = $Barrel
 
 @export var default_position: Vector3
 @export var ads_position: Vector3
@@ -32,8 +36,14 @@ func _process(delta: float) -> void:
 		if !gun_anim.is_playing():
 			if is_aiming == false:
 				gun_anim.play("shoot")
+				instance = bullet.instantiate()
+				get_tree().current_scene.add_child(instance)
+				instance.global_transform = gun_barrel.global_transform
 			elif is_aiming == true:
 				gun_anim.play("aim_shoot")
+				instance = bullet.instantiate()
+				get_tree().current_scene.add_child(instance)
+				instance.global_transform = gun_barrel.global_transform
 		
 		
 		

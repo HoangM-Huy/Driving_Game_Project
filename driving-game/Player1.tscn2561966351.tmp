@@ -1156,6 +1156,5 @@ ads_position = Vector3(0, -0.574, -0.246)
 [node name="Shoot" type="AnimationPlayer" parent="Pivot/Player_camera/HandPivot/coltm4a1" unique_id=1736583102]
 libraries/ = SubResource("AnimationLibrary_bcehq")
 
-[node name="Barrel" type="RayCast3D" parent="Pivot/Player_camera/HandPivot/coltm4a1" unique_id=119294723]
-transform = Transform3D(4.3711374e-08, -2.8547227e-09, -1.0000001, 1.0000002, 1.5621916e-07, 4.3711385e-08, 1.5621916e-07, -1.0000005, 3.079441e-08, 3, 2.5000029, 1.322478e-07)
-target_position = Vector3(0, 0, -1)
+[node name="RayCast3D" type="RayCast3D" parent="Pivot/Player_camera/HandPivot/coltm4a1" unique_id=119294723]
+transform = Transform3D(-1.8626451e-08, -1.0000002, -4.3711395e-08, 1.0000002, -1.8626451e-08, 4.3711385e-08, -4.371138e-08, -4.3711385e-08, 1, 3, 2.5000024, 1.3411045e-07)
