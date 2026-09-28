@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://paarfgpq15tw"]
 
-[ext_resource type="PackedScene" uid="uid://dee2di4a1ycux" path="res://basic_sword.glb" id="1_74bdg"]
 [ext_resource type="Script" uid="uid://cdv4l142cth6s" path="res://sword.gd" id="1_e4ynd"]
+[ext_resource type="PackedScene" uid="uid://llllp27xwgfb" path="res://assets/player/machete.blend" id="2_e4ynd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgi7u"]
 size = Vector3(12.614983, 19.877022, 7.723192)
@@ -134,8 +134,8 @@ script = ExtResource("1_e4ynd")
 [node name="Katana" type="Node3D" parent="." unique_id=1406647225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013632059, 0)
 
-[node name="Mesh" parent="Katana" unique_id=1351552194 instance=ExtResource("1_74bdg")]
-transform = Transform3D(0.049753495, 0, 0, 0, 0.030936278, 0, 0, 0, 0.039888814, 0.10129738, 0.010029733, 6.377697e-05)
+[node name="machete" parent="Katana" unique_id=485109550 instance=ExtResource("2_e4ynd")]
+transform = Transform3D(-0.09998693, 0, 0.0016168901, 0, 0.1, 0, -0.0016168901, 0, -0.09998693, 0.0023713112, -0.0058532953, -0.00023445487)
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=22359245]
 transform = Transform3D(0.033468515, 0, 0, 0, 0.03423905, 0, 0, 0, 0.06350196, 0.09847093, 0, 0)
