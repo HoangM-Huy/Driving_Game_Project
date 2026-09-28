@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t1gtgu4g1e46"
-path.s3tc="res://.godot/imported/basic_sword_1.png-009d923886da05d3136408c05830a37a.s3tc.ctex"
+uid="uid://i3ybfblodpdl"
+path.s3tc="res://.godot/imported/basic_sword_7.jpg-05de47145ed3fc99027dd0f1132861e1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6095e56fbbbf7100480e37000509fbf2"
+"md5": "b87ede5168caa347ed02a844fa56be41"
 }
 
 [deps]
 
-source_file="res://basic_sword_1.png"
-dest_files=["res://.godot/imported/basic_sword_1.png-009d923886da05d3136408c05830a37a.s3tc.ctex"]
+source_file="res://assets/basic_sword_7.jpg"
+dest_files=["res://.godot/imported/basic_sword_7.jpg-05de47145ed3fc99027dd0f1132861e1.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://basic_sword_7.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
