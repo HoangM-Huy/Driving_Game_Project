@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://boqd3pa7t3kcb"]
+
+[ext_resource type="Script" uid="uid://cxdyggos8j33v" path="res://main.gd" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://ca32qu0a66ak5" path="res://Player1.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://cblji1lgei2p5" path="res://car.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dvkb30nj57qgx" path="res://house1.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://dhxbpw86aksms" path="res://Ammunition.gd" id="5_lquwl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(60, 2, 60.10254)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tdpr"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="Theme" id="Theme_5tdpr"]
+default_font_size = 40
+
+[node name="Main" type="Node" unique_id=371272740]
+script = ExtResource("1_7mycd")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=2031664124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1382549225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05126953)
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1119038756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13804913, 0)
+mesh = SubResource("BoxMesh_5tdpr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1018710437]
+transform = Transform3D(0.9659258, 0, -0.25881913, 0.22414397, 0.5, 0.83651626, 0.12940958, -0.8660254, 0.4829629, 11.13063, 16.468117, -8.461626)
+shadow_enabled = true
+
+[node name="Car" parent="." unique_id=614287776 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12775773, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Car" unique_id=1184680637]
+transform = Transform3D(0.9999588, -0.0061530634, 0.006673731, 0.0018329081, 0.8569257, 0.5154367, -0.008890406, -0.5154032, 0.8569017, -0.25211, 3.602137, 4.4887686)
+
+[node name="Player" parent="." unique_id=974651752 groups=["player"] instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6000001, -0.1, 0)
+
+[node name="House" parent="." unique_id=1324037848 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.5, -0.1, 0)
+
+[node name="Ammo" type="Control" parent="." unique_id=1614280019]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_top = 570.0
+offset_right = 65.0
+offset_bottom = 610.0
+theme = SubResource("Theme_5tdpr")
+
+[node name="Ammunition" type="Label" parent="Ammo" unique_id=31855485]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -2.0
+offset_right = 111.0
+offset_bottom = 28.0
+scale = Vector2(0.98579293, 1.0056912)
+text = "Ammo: 0/0"
+script = ExtResource("5_lquwl")

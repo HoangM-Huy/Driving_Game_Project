@@ -1,6 +1,5 @@
 extends Label
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text = "Ammo: %d/%d" % [$"../../Player/Pivot/Player_camera/HandPivot/coltm4a1".ammunition, $"../../Player/Pivot/Player_camera/HandPivot/coltm4a1".max_ammunition]
