@@ -1,9 +1,14 @@
 extends Node3D
 
 const ADS_LERP = 20
+signal fire
+signal reload
 
 var bullet = load("res://bullet.tscn")
 var instance
+
+@export var ammunition = 30
+@export var max_ammunition = 30
 
 @onready var camera = $"../.."
 @onready var gun_anim = $Shoot
@@ -33,17 +38,26 @@ func _process(delta: float) -> void:
 		camera.fov = lerp(camera.fov, fview["Default"], ADS_LERP * delta)
 		
 	if Input.is_action_pressed("attack"):
-		if !gun_anim.is_playing():
+		if !gun_anim.is_playing() and ammunition != 0:
 			if is_aiming == false:
+				fire.emit()
 				gun_anim.play("shoot")
 				instance = bullet.instantiate()
 				get_tree().current_scene.add_child(instance)
 				instance.global_transform = gun_barrel.global_transform
 			elif is_aiming == true:
+				fire.emit()
 				gun_anim.play("aim_shoot")
 				instance = bullet.instantiate()
 				get_tree().current_scene.add_child(instance)
 				instance.global_transform = gun_barrel.global_transform
+				
+	if Input.is_action_pressed("reload"):
+		ammunition = 0
+		reload.emit()
+		gun_anim.play("reload")
+		ammunition = max_ammunition
+		
 		
 		
 		

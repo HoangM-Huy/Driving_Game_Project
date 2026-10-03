@@ -524,6 +524,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_bcehq"]
 resource_name = "aim_shoot"
@@ -540,6 +552,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -0.574, -0.246), Vector3(0, -0.574, -0.196), Vector3(0, -0.574, -0.246)]
+}
+
+[sub_resource type="Animation" id="Animation_0yw5o"]
+resource_name = "reload"
+length = 2.0666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.0333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.574, -0.246), Vector3(0, -0.734, -0.246), Vector3(0, -0.574, -0.246)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.6333333, 2.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(-0.41887903, 0.44505897, 0), Vector3(-0.41887903, 0.44505897, 0), Vector3(0, 1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_r1v58"]
@@ -563,6 +603,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_1slkb"),
 &"aim_shoot": SubResource("Animation_bcehq"),
+&"reload": SubResource("Animation_0yw5o"),
 &"shoot": SubResource("Animation_r1v58")
 }
 

@@ -4,12 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://ca32qu0a66ak5" path="res://Player1.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://cblji1lgei2p5" path="res://car.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dvkb30nj57qgx" path="res://house1.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://dhxbpw86aksms" path="res://Ammunition.gd" id="5_lquwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(60, 2, 60.10254)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5tdpr"]
 size = Vector3(60, 2, 60)
+
+[sub_resource type="Theme" id="Theme_5tdpr"]
+default_font_size = 40
 
 [node name="Main" type="Node" unique_id=371272740]
 script = ExtResource("1_7mycd")
@@ -40,3 +44,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6000001, -0.1, 0)
 
 [node name="House" parent="." unique_id=1324037848 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.5, -0.1, 0)
+
+[node name="Ammo" type="Control" parent="." unique_id=1614280019]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_top = 570.0
+offset_right = 65.0
+offset_bottom = 610.0
+theme = SubResource("Theme_5tdpr")
+
+[node name="Ammunition" type="Label" parent="Ammo" unique_id=31855485]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -2.0
+offset_right = 111.0
+offset_bottom = 28.0
+scale = Vector2(0.98579293, 1.0056912)
+text = "Ammo: 0/0"
+script = ExtResource("5_lquwl")

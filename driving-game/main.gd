@@ -8,4 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$Player/Pivot/Player_camera/HandPivot/coltm4a1.fire.connect($Ammo/Ammunition._on_fire.bind())
+	$Player/Pivot/Player_camera/HandPivot/coltm4a1.reload.connect($Ammo/Ammunition._on_reload.bind())
