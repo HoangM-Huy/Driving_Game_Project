@@ -5,18 +5,25 @@ extends CharacterBody3D
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 
+# Human health
+@export var maxHealth: int = 100
+@export var currHealth: int = 50
+var prevHealth: int
+@onready var healthBar = $Pivot/Player_camera/SubViewport/HealthBar3D
+
+@onready var medKit = $Pivot/Player_camera/HandPivot/Medkit
+
 var target_velocity = Vector3.ZERO
 @export var jump_impulse=20
 @onready var anim_player = $Pivot/HumanChar/AnimationPlayer
 
 @onready var swordAnim = $Pivot/Player_camera/HandPivot/Sword/anim
+@onready var medKitAnim = $Pivot/Player_camera/HandPivot/Medkit/anim
 
 var look_dir: Vector3
 var side_dir: Vector3
 @onready var camera = $Pivot/Player_camera
 var camera_sens = 50
-
-
 
 var mouseInput = Vector2.ZERO
 
@@ -26,6 +33,12 @@ func _ready() -> void:
 	swordAnim.play("Equip")
 	LockMouse = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	prevHealth = currHealth
+	update_health_bar()
+
+func update_health_bar() -> void:
+	healthBar.max_value = maxHealth
+	healthBar.value = currHealth
 
 func _physics_process(delta):
 	var mouseMovements = mouseInput
@@ -85,6 +98,10 @@ func _input(event: InputEvent):
 	if event is InputEventMouseMotion and LockMouse: 
 		mouseInput += event.relative * 0.01
 		
+	# Heal
+	if Input.is_action_just_pressed("use_medkit"):
+		heal_health(medKit.healValue)
+		
 func enter_car():
 	set_physics_process(false)
 	hide()
@@ -94,3 +111,16 @@ func leave_car():
 	set_physics_process(true)
 	show()
 	camera.current = true
+
+func take_damage(damage):
+	currHealth = max(currHealth - damage, 0)
+	update_health_bar()
+	
+func heal_health(healValue):
+	currHealth = min(currHealth + healValue, maxHealth)
+	update_health_bar()
+
+func _on_regen_timer_timeout() -> void:
+	if currHealth == prevHealth and currHealth < maxHealth:
+		heal_health(5)
+	prevHealth = currHealth  # always sync, whether we healed or not
