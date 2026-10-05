@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://b340fk2xy8uj3"]
+
+[ext_resource type="PackedScene" uid="uid://t1yct623yjpv" path="res://Medkit.glb" id="1_7hg4a"]
+[ext_resource type="Script" uid="uid://chtk8vey5sca5" path="res://medkit.gd" id="1_22oi4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgi7u"]
+size = Vector3(1.0379791, 0.17288208, 1.0409393)
+
+[sub_resource type="Animation" id="Animation_7hg4a"]
+resource_name = "Consume"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("med_kit/medkit:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("med_kit/medkit:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0), Vector3(1.0471976, 3.1415927, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_22oi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("med_kit/medkit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("med_kit/medkit:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22oi4"]
+_data = {
+&"Consume": SubResource("Animation_7hg4a"),
+&"RESET": SubResource("Animation_22oi4")
+}
+
+[node name="Medkit" type="Node3D" unique_id=1925351890]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_22oi4")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1146728689]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1860062895]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0020828247, 0.010172367, 0.0013504028)
+shape = SubResource("BoxShape3D_fgi7u")
+
+[node name="med_kit" type="Node3D" parent="." unique_id=286614425]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="medkit" parent="med_kit" unique_id=1147352434 instance=ExtResource("1_7hg4a")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=765129848]
+libraries/ = SubResource("AnimationLibrary_22oi4")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

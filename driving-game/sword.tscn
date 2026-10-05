@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://paarfgpq15tw"]
 
 [ext_resource type="Script" uid="uid://cdv4l142cth6s" path="res://sword.gd" id="1_e4ynd"]
-[ext_resource type="PackedScene" uid="uid://llllp27xwgfb" path="res://assets/player/machete.blend" id="2_e4ynd"]
+[ext_resource type="PackedScene" uid="uid://n3gmjppgdl22" path="res://assets/player/machete.blend" id="2_e4ynd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgi7u"]
 size = Vector3(12.614983, 19.877022, 7.723192)
