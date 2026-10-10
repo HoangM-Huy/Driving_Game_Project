@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bf7jd5vdko4qi"]
+
+[ext_resource type="PackedScene" uid="uid://b8hf3ruxcy2je" path="res://assets/turrets/minigun_turret.glb" id="1_3oylf"]
+[ext_resource type="Script" uid="uid://ygu8cpejvlkv" path="res://turret.gd" id="1_tjdg3"]
+
+[node name="Turret" type="Node3D" unique_id=1218317016]
+script = ExtResource("1_tjdg3")
+
+[node name="minigun_turret" parent="." unique_id=719976360 instance=ExtResource("1_3oylf")]
+
+[node name="Barrels" parent="minigun_turret" index="0" unique_id=45884389]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.01110683, 0.33157617, 0.7365272)
+
+[node name="Clamp" parent="minigun_turret" index="1" unique_id=1937121763]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.01110683, 0.33157617, 0.7365272)
+
+[node name="Control unit" parent="minigun_turret" index="2" unique_id=184476179]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.008866489, 0.37588987, 0.18563753)
+
+[node name="Feed" parent="minigun_turret" index="3" unique_id=1826032377]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.074281946, 0.278708, 0.35311535)
+
+[node name="Handle" parent="minigun_turret" index="4" unique_id=1875181311]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.11376515, 0.37783742, 0.1460543)
+
+[node name="HandleAttachBottom" parent="minigun_turret" index="5" unique_id=283372431]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.07829851, 0.33163098, 0.14663184)
+
+[node name="HandleAttachTop" parent="minigun_turret" index="6" unique_id=1129790810]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.07829851, 0.42189208, 0.14842364)
+
+[node name="Main body" parent="minigun_turret" index="7" unique_id=1053241833]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.01110683, 0.33644146, 0.49144492)
+
+[node name="Motor" parent="minigun_turret" index="8" unique_id=158268083]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.10492939, 0.38376874, 0.46516132)
+
+[node name="Rotor" parent="minigun_turret" index="11" unique_id=1176204997]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.01110683, 0.33631384, 0.49787238)
+
+[node name="Shroud" parent="minigun_turret" index="12" unique_id=183066467]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.01110683, 0.3265158, 0.99143016)
+
+[node name="Trigger" parent="minigun_turret" index="13" unique_id=1037020462]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0.0002745092, 0, -0.0002745092, 1.0000002, 0.03828176, 0.3909829, 0.12966421)
+
+[node name="Gun" type="Node3D" parent="minigun_turret" unique_id=1255530411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08208171, 0.32431158, 0.41990063)
+
+[node name="Support" type="Node3D" parent="minigun_turret" unique_id=777527438]
+
+[editable path="minigun_turret"]

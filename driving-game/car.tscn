@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cblji1lgei2p5"]
 
-[ext_resource type="PackedScene" uid="uid://q1enkkr2rse8" path="res://SedanNew.glb" id="1_7822p"]
 [ext_resource type="Script" uid="uid://ddiyaph47p4ny" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="PackedScene" uid="uid://ckl00awo4rr4d" path="res://Sedan.glb" id="2_uoj53"]
+[ext_resource type="PackedScene" uid="uid://bf7jd5vdko4qi" path="res://turret.tscn" id="3_k61xc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgi7u"]
 
@@ -23,7 +24,10 @@ script = ExtResource("1_uoj53")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=278528413]
 
-[node name="Sedan" parent="Pivot" unique_id=1857067826 instance=ExtResource("1_7822p")]
+[node name="Sedan" parent="Pivot" unique_id=1323743942 instance=ExtResource("2_uoj53")]
+
+[node name="Turret" parent="Pivot/Sedan" unique_id=1218317016 instance=ExtResource("3_k61xc")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -0.10823417, 1.2712975, 1.2249403)
 
 [node name="MainFrameHitbox" type="CollisionShape3D" parent="." unique_id=865198997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120666504, 0.6771077, 1.1559132)

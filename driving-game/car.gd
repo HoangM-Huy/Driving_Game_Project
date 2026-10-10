@@ -14,6 +14,7 @@ func _input(event: InputEvent) -> void:
 		_leave_car()
 	
 func _enter_car():
+	$Pivot/Sedan/Turret.turretEnable = true
 	withPlayer = true
 	
 	var player = get_tree().get_first_node_in_group("player")
@@ -21,6 +22,7 @@ func _enter_car():
 	
 func _leave_car():
 	withPlayer = false
+	$Pivot/Sedan/Turret.turretEnable = false
 	var player = get_tree().get_first_node_in_group("player")
 	player.leave_car()
 	
