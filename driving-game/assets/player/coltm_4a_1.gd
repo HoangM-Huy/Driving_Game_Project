@@ -59,5 +59,3 @@ func _process(delta: float) -> void:
 		ammunition = max_ammunition
 		
 		
-		
-		
