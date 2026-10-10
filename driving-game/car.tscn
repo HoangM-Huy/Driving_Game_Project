@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://q1enkkr2rse8" path="res://SedanNew.glb" id="1_7822p"]
 [ext_resource type="Script" uid="uid://ddiyaph47p4ny" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="Script" uid="uid://ctvyka0ja4aig" path="res://area_3d.gd" id="3_k61xc"]
+[ext_resource type="PackedScene" uid="uid://dxu5ddtpxco5p" path="res://fog_volume.tscn" id="4_06lh1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgi7u"]
 
@@ -14,7 +16,14 @@ size = Vector3(1.7128601, 0.8617266, 2.1109009)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5tdpr"]
 size = Vector3(1, 1, 1.2)
 
-[node name="Car" type="VehicleBody3D" unique_id=614287776]
+[sub_resource type="Environment" id="Environment_5tdpr"]
+background_energy_multiplier = 2.01
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="Car" type="VehicleBody3D" unique_id=614287776 groups=["car"]]
 mass = 450.0
 physics_material_override = SubResource("PhysicsMaterial_fgi7u")
 center_of_mass_mode = 1
@@ -25,15 +34,15 @@ script = ExtResource("1_uoj53")
 
 [node name="Sedan" parent="Pivot" unique_id=1857067826 instance=ExtResource("1_7822p")]
 
-[node name="MainFrameHitbox" type="CollisionShape3D" parent="." unique_id=865198997]
+[node name="MainFrameHitbox" type="CollisionShape3D" parent="." unique_id=865198997 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120666504, 0.6771077, 1.1559132)
 shape = SubResource("BoxShape3D_fvh6u")
 
-[node name="HoodHitbox" type="CollisionShape3D" parent="." unique_id=939342518]
+[node name="HoodHitbox" type="CollisionShape3D" parent="." unique_id=939342518 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13044739, 0.43844375, -0.71817756)
 shape = SubResource("BoxShape3D_6ygx7")
 
-[node name="FrontLeft" type="VehicleWheel3D" parent="." unique_id=849359510]
+[node name="FrontLeft" type="VehicleWheel3D" parent="." unique_id=849359510 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8572332, 0.118794054, -0.95536923)
 engine_force = 100.0
 use_as_traction = true
@@ -41,7 +50,7 @@ use_as_steering = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.35
 
-[node name="FrontRight" type="VehicleWheel3D" parent="." unique_id=1004915528]
+[node name="FrontRight" type="VehicleWheel3D" parent="." unique_id=1004915528 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6079157, 0.118794054, -0.95536923)
 engine_force = 100.0
 use_as_traction = true
@@ -49,14 +58,14 @@ use_as_steering = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.35
 
-[node name="RearRight" type="VehicleWheel3D" parent="." unique_id=2114637883]
+[node name="RearRight" type="VehicleWheel3D" parent="." unique_id=2114637883 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8432388, 0.115238756, 1.4361103)
 engine_force = 100.0
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.35
 
-[node name="RearLeft" type="VehicleWheel3D" parent="." unique_id=1517522672]
+[node name="RearLeft" type="VehicleWheel3D" parent="." unique_id=1517522672 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.107193, 0.115238756, 1.427779)
 engine_force = 100.0
 use_as_traction = true
@@ -70,12 +79,21 @@ text = "E"
 font_size = 200
 outline_size = 100
 
-[node name="Area3D" type="Area3D" parent="." unique_id=957219396]
+[node name="Area3D" type="Area3D" parent="." unique_id=957219396 groups=["car"]]
 transform = Transform3D(-2.9750001, 0, 0, 0, 2, 0, 0, 0, 13.2, 0, 0, 0)
+script = ExtResource("3_k61xc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=466401820]
 transform = Transform3D(0.78, 0, 0, 0, 1, 0, 0, 0, 0.3, 0.06722689, 0, 0.02242425)
 shape = SubResource("BoxShape3D_5tdpr")
 
+[node name="FogVolume" parent="." unique_id=345126569 instance=ExtResource("4_06lh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17767727, 1.310205, -0.98847705)
+size = Vector3(1.75, 2, 1.5)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="FogVolume" unique_id=1070027011]
+environment = SubResource("Environment_5tdpr")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="car_part_hit" from="Area3D" to="." method="_on_area_3d_car_part_hit"]

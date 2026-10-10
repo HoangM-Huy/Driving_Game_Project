@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dxu5ddtpxco5p"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_dysc7"]
+density = 18.78
+height_falloff = 3.0314286
+edge_fade = 0.49245965
+
+[node name="FogVolume" type="FogVolume" unique_id=345126569]
+size = Vector3(2, 2, 1.25)
+shape = 2
+material = SubResource("FogMaterial_dysc7")
